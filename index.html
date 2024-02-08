@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Kakao Bank</title>
+</head>
+
+<body>
+  <section>
+    <div class="main-image-wrapper">
+      <img width="320" src="./Lovepik_com-data-management-data-analysis-icon-free-vector-illustration-mate.png"
+        alt="coding image">
+    </div>
+    <div class="intro-main">
+      <p>이미 모두의 은행,<br /> 카카오뱅크</p>
+      <p>함께 일해요.</p>
+      <span id="join-us-text">Join us!</span>
+      <img id="down-arrow-icon" src="./down-arrow.png" alt="down arrow image">
+    </div>
+  </section>
+  <section>
+    <ul class="list-item-wrapper">
+      <li class="list-item">올해 한정 연 5%대 금리</li>
+      <li class="list-item">26주 적금</li>
+      <li class="list-item">주택청약통장 첫 개설자 혜택</li>
+      <li class="list-item">입출금 자유 </li>
+      <li class="list-item">26주 적금</li>
+      <li class="list-item">올해 한정 연 5%대 금리</li>
+      <li class="list-item">주택청약통장 첫 개설자 혜택</li>
+      <li class="list-item">입출금 자유롭게</li>
+      <li class="list-item">26주 적금</li>
+      <li class="list-item">연 5%대 금리</li>
+      <li class="list-item">카카오뱅크</li>
+      <li class="list-item">마이너스 통장대출</li>
+      <li class="list-item">주택청약통장 첫 개설자 혜택</li>
+      <li class="list-item">연 5%대 금리</li>
+      <li class="list-item">카카오뱅크</li>
+      <li class="list-item">입출금 자유롭게</li>
+      <li class="list-item">마이너스 통장대출</li>
+      <li class="list-item">연 5%대 금리</li>
+      <li class="list-item">주택청약통장 첫 개설자 혜택</li>
+      <li class="list-item">입출금 자유롭게</li>
+      <li class="list-item">26주 적금</li>
+      <li class="list-item">연 5%대 금리</li>
+      <li class="list-item">카카오뱅크</li>
+      <li class="list-item">입출금 자유롭게</li>
+      <li class="list-item">26주 적금</li>
+      <li class="list-item">마이너스 통장대출</li>
+      <li class="list-item">주택청약통장 첫 개설자 혜택</li>
+      <li class="list-item">입출금 자유롭게</li>
+    </ul>
+  </section>
+  <section id="panel1-img">
+    <img id="flying-santa" src="./santa_flying.png" alt="santa santa_flying">
+  </section>
+</body>
+<script>
+  const listItemStartY = 380;
+  const listItemEndY = 2000;
+  const listItems = document.querySelectorAll('.list-item');
+  let division = (listItemEndY - listItemStartY) / listItems.length;
+  const panel1Img = document.querySelector('#panel1-img')
+  const scrollYBottom = document.documentElement.clientHeight + window.scrollY;
+  const flyingSantaImage = document.getElementById('flying-santa');
+
+  window.addEventListener("scroll", () => {
+    if (document.getElementById("on")) document.getElementById("on").removeAttribute("id");
+    if (window.scrollY > listItemStartY && window.scrollY < listItemEndY) {
+      const targetIndex = Math.floor((window.scrollY - listItemStartY) / division);
+      if (targetIndex <= listItems.length) listItems[targetIndex].id = "on";
+    }
+    if (scrollYBottom > panel1Img.offsetTop && scrollYBottom < panel1Img.offsetTop + panel1Img.offsetHeight + 100) {
+      const translateX = 80 - (80 * 1.5 * (window.scrollY - panel1Img.offsetTop) / (panel1Img.offsetHeight + 100));
+      const translateY = -13 + 13 * (window.scrollY - panel1Img.offsetTop) / (panel1Img.offsetHeight + 100);
+      console.log(translateX, translateY);
+      flyingSantaImage.style.transform = `translate(${translateX}px, ${translateY}px)`;
+    }
+  })
+</script>
+
+</html>
